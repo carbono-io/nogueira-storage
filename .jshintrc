@@ -1,0 +1,15 @@
+//techs
+{
+    "node"       : true,
+    "mocha"    : true,
+
+    "bitwise"    : true,
+    "eqeqeq"     : true,
+//    "es5"        : true,
+    "latedef"    : true,
+    "noarg"      : true,
+    "strict"     : true,        
+    "undef"      : true,
+    "unused"     : true
+}
+//rules

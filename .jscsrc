@@ -1,0 +1,17 @@
+{
+  "preset": "node-style-guide",
+  "excludeFiles": ["node_modules/**", "src/!(bar|foo)"],
+  "disallowMultipleLineBreaks": true,
+  "disallowMultipleVarDecl": true,  
+  "disallowSpacesInCallExpression": true,   
+  "requireCamelCaseOrUpperCaseIdentifiers": true,
+  "requireCommaBeforeLineBreak": true,
+  "requireCurlyBraces": true,
+  "requireSpaceAfterBinaryOperators": true,
+  "requireSpacesInFunctionDeclaration": {
+//    "beforeOpeningRoundBrace": false,
+    "beforeOpeningCurlyBrace": true
+  },
+  "requireSemicolons": true,
+  "requireTrailingComma": true
+}

@@ -13,9 +13,13 @@
   },
   "license": "ISC",
   "dependencies": {
-    "express": "^4.13.3"
+    "express": "4.13.3"
   },
   "devDependencies": {
-    "gulp": "^3.9.0"
+    "gulp": "3.9.0",
+    "gulp-jscs": "2.0.0",
+    "gulp-notify": "2.2.0",
+    "gulp-jshint": "1.11.2",
+    "jshint-stylish": "2.0.1"
   }
 }
