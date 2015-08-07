@@ -1,17 +1,67 @@
 {
-  "preset": "node-style-guide",
   "excludeFiles": ["node_modules/**", "src/!(bar|foo)"],
+  "jsDoc": {
+    "checkAnnotations": "closurecompiler",
+    "checkTypes": "strictNativeCase",
+    "enforceExistence": "exceptExports"
+  },
+  "disallowKeywords": ["with"],
+  "disallowKeywordsOnNewLine": ["else"],
+  "disallowMixedSpacesAndTabs": true,
   "disallowMultipleLineBreaks": true,
-  "disallowMultipleVarDecl": true,  
-  "disallowSpacesInCallExpression": true,   
+  "disallowMultipleVarDecl": true,
+  "disallowNewlineBeforeBlockStatements": true,
+  "disallowQuotedKeysInObjects": true,
+  "disallowSpaceAfterObjectKeys": true,
+  "disallowSpaceAfterPrefixUnaryOperators": true,
+  "disallowSpacesInCallExpression": true,     
+  "disallowSpacesInFunctionDeclaration": {
+    "beforeOpeningRoundBrace": true
+  },
+  "disallowSpacesInNamedFunctionExpression": {
+    "beforeOpeningRoundBrace": true
+  },
+  "disallowSpacesInsideParentheses": true,
+  "disallowTrailingWhitespace": true,
+  "maximumLineLength": 80,
   "requireCamelCaseOrUpperCaseIdentifiers": true,
-  "requireCommaBeforeLineBreak": true,
+  "requireCapitalizedComments": true,
+  "requireCapitalizedConstructors": true,
+  "requireCommaBeforeLineBreak": true,  
   "requireCurlyBraces": true,
+  "requireSemicolons": true,
+  "requireSpaceAfterKeywords": [
+    "if",
+    "else",
+    "for",
+    "while",
+    "do",
+    "switch",
+    "case",
+    "return",
+    "try",
+    "catch",
+    "typeof"
+  ],
+  "requireSpaceAfterLineComment": true,
   "requireSpaceAfterBinaryOperators": true,
-  "requireSpacesInFunctionDeclaration": {
-//    "beforeOpeningRoundBrace": false,
+  "requireSpaceBeforeBinaryOperators": true,
+  "requireSpaceBeforeBlockStatements": true,
+  "requireSpaceBeforeObjectValues": true,
+  "requireSpacesInAnonymousFunctionExpression": {
+    "beforeOpeningRoundBrace": true,
+    "beforeOpeningCurlyBrace": true
+  },  
+  "requireSpacesInFunction": {
     "beforeOpeningCurlyBrace": true
   },
-  "requireSemicolons": true,
-  "requireTrailingComma": true
+  "requireTrailingComma": {
+    "ignoreSingleLine": true
+  },
+//  {
+//    "ignoreSingleLine": true
+//  },
+  "validateIndentation": 2,
+  "validateLineBreaks": "LF",
+  "validateQuoteMarks": "'"  
 }
