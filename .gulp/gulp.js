@@ -37,7 +37,7 @@ module.exports = function (gulp, jsPath) {
       // Force `require` to return covered files
       .pipe(istanbul.hookRequire())
       .on('finish', function () {
-        gulp.src(['./test/test.js'])
+        gulp.src(['./test/**/*.js'])
           .pipe(mocha({reporter: 'nyan', growl: 'false'}))
           .pipe(istanbul.writeReports({
             dir: './unit-test-coverage',
