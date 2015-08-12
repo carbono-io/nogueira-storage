@@ -14,7 +14,7 @@ module.exports = function (gulp, jsPath) {
         gulp.src(jsPath)
             .pipe(jscs('.gulp/.jscsrc'))
             .on('error', notify.onError(
-                {title: 'JSCS Error :/', 
+                {title: 'JSCS Error :/',
                 message: 'Error: <%= error.message %>',}));
     });
 
@@ -45,7 +45,7 @@ module.exports = function (gulp, jsPath) {
                     .pipe(
                         istanbul.enforceThresholds(
                             { thresholds: { global: 90 } }))
-                    .on('error', 
+                    .on('error',
                         function (err) {
                             console.log(err.message);
                         }
@@ -55,13 +55,13 @@ module.exports = function (gulp, jsPath) {
     });
 
     gulp.task('gendoc', function (cb) {
-          exec('./node_modules/jsdoc/jsdoc.js -c .gulp/.jsdoc .',
-              function (err, stdout, stderr) {
-                  console.log(stdout);
-                  console.log(stderr);
-                  cb(err);
-              }
-          );
+        exec('./node_modules/jsdoc/jsdoc.js -c .gulp/.jsdoc .',
+          function (err, stdout, stderr) {
+              console.log(stdout);
+              console.log(stderr);
+              cb(err);
+          }
+        );
     });
 
     gulp.task('serve', function (cb) {
@@ -73,7 +73,7 @@ module.exports = function (gulp, jsPath) {
     });
 
     gulp.task('watch', function () {
-        gulp.watch(jsPath, ['checkstyle', 'checkcode'] );
+        gulp.watch(jsPath, ['checkstyle', 'checkcode']);
     });
 
     gulp.task('checkall', ['checkstyle', 'checkcode', 'test',]);

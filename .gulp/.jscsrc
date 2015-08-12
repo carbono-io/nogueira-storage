@@ -1,5 +1,5 @@
 {
-  "excludeFiles": ["node_modules/**", "src/!(bar|foo)"],
+  "excludeFiles": ["node_modules/**"],
   "jsDoc": {
     "checkAnnotations": "closurecompiler",
     "checkTypes": "strictNativeCase",

@@ -15,7 +15,7 @@ describe('Testator', function () {
 
     describe('foo', function () {
         it('using foo bar', function () {
-           var s = foo('foo');
+            var s = foo('foo');
             s.should.be.a('string');
             s.should.equal('bar');
             s.should.have.length(3);
