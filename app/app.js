@@ -8,8 +8,8 @@ var bar = require('./lib/bar.js');
  * @param {string} msg - description.
  */
 function f(msg) {
-  foo(msg);
-  bar.logic();
+    foo(msg);
+    bar.logic();
 }
 
 module.exports = f;

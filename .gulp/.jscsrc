@@ -58,10 +58,7 @@
   "requireTrailingComma": {
     "ignoreSingleLine": true
   },
-//  {
-//    "ignoreSingleLine": true
-//  },
-  "validateIndentation": 2,
+  "validateIndentation": 4,
   "validateLineBreaks": "LF",
   "validateQuoteMarks": "'"  
 }
