@@ -1,10 +1,5 @@
 {
   "excludeFiles": ["node_modules/**"],
-  "jsDoc": {
-    "checkAnnotations": "closurecompiler",
-    "checkTypes": "strictNativeCase",
-    "enforceExistence": "exceptExports"
-  },
   "disallowKeywords": ["with"],
   "disallowKeywordsOnNewLine": ["else"],
   "disallowMixedSpacesAndTabs": true,
@@ -60,5 +55,10 @@
   },
   "validateIndentation": 4,
   "validateLineBreaks": "LF",
-  "validateQuoteMarks": "'"  
+  "validateQuoteMarks": "'",
+  "jsDoc": {
+    "checkAnnotations": "jsdoc3",
+    "checkTypes": "strictNativeCase" //,
+//    "enforceExistence": "exceptExports"
+  }
 }

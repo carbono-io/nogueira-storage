@@ -1,3 +1,7 @@
+/**
+ * @file Manages the configuration settings for the widget.
+ * @author Rowina Sanela
+ */
 'use strict';
 
 var foo = require('../lib/foomod/foomod.js');
@@ -10,6 +14,20 @@ var bar = require('./lib/bar.js');
 function f(msg) {
     foo(msg);
     bar.logic();
+    console.log(1);
+    console.log(1);
+    console.log(1);
+    console.log(1);
+    console.log(1);
+    console.log(1);
+    console.log(1);
+    console.log(1);
+    console.log(1);
+    console.log(1);
+    console.log(1);
+    console.log(1);
+    console.log(1);
+    console.log(1);
 }
 
 module.exports = f;
