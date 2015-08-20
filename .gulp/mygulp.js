@@ -1,6 +1,6 @@
 'use strict';
 // External dependencies
-var exec     = require('child_process').exec;
+var exec = require('child_process').exec;
 
 module.exports = function (gulp, jsPath) {
     console.log(jsPath);

@@ -82,7 +82,7 @@ module.exports = function (gulp, jsPath) {
         gulp.watch(jsPath, ['checkstyle', 'checkcode']);
     });
 
-    gulp.task('checkall', ['checkstyle', 'checkcode', 'test', ]);
+    gulp.task('checkall', ['checkstyle', 'checkcode', 'test',]);
 
     gulp.task('default', function () {
         console.log(

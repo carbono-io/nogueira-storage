@@ -2,7 +2,7 @@
 // Test with Mocha + Chai + Should
 // Mocha with BDD approach
 require('chai').should();
-var foo  = require('../lib/foomod/foomod.js');
+var foo = require('../lib/foomod/foomod.js');
 
 describe('Testator', function () {
     before(function () {

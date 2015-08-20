@@ -1,9 +1,9 @@
 'use strict';
-var gulp     = require('gulp');
+var gulp = require('gulp');
 
-var JS_PATH  = ['*.js',
-               '{lib,app,test}/**/*.{js,json}',
-               ];
+var JS_PATH = ['*.js',
+    '{lib,app,test}/**/*.{js,json}',
+];
 
 // Pass along gulp reference to import tasks onto your gulp object
 require('./.gulp/gulp')(gulp, JS_PATH);

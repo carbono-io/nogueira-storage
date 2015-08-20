@@ -1,14 +1,14 @@
+'use strict';
 /**
  * @file Manages the configuration settings for the widget.
  * @author Rowina Sanela
  */
-'use strict';
 
 var foo = require('../lib/foomod/foomod.js');
 var bar = require('./lib/bar.js');
 
 /**
- * Function f to execute App
+ *Function f to execute App
  * @param {string} msg - description.
  */
 function f(msg) {
