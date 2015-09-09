@@ -27,5 +27,10 @@
     "jshint-stylish": "2.0.1",
     "mocha": "2.2.5",
     "sinon": "1.15.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "consign": "^0.1.2",
+    "mongoose": "^4.1.6"
   }
 }
