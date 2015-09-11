@@ -60,7 +60,7 @@ module.exports = function (app) {
                 } else {
                     var error = {
                         code: 404,
-                        message: 'Token not found'
+                        message: 'Token not found',
                     };
 
                     res.status(404).json(createJsonResponse(undefined, error));
@@ -77,7 +77,7 @@ module.exports = function (app) {
      *                 to be put in the response.
      * @param {Object} Errors that may have occurred
      *                 along the way.
-     * 
+     *
      * @returns {Object} Response object following
      *                   Google's JSON style guide.
      */
