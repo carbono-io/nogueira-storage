@@ -1,5 +1,8 @@
 'use strict';
 
+var CJM   = require('carbono-json-messages');
+var pjson = require('../../package.json');
+
 module.exports = function (app) {
     var Token = app.models.token;
 
@@ -19,12 +22,12 @@ module.exports = function (app) {
 
         token.save(function (err, data) {
             if (err) {
-                res.json({error: err});
+                res.status(500).json(createJsonResponse(undefined, err));
 
                 return;
             }
 
-            res.json({data: data});
+            res.status(200).json(createJsonResponse(data, undefined));
         });
     };
 
@@ -40,15 +43,54 @@ module.exports = function (app) {
     var getTokenStatus = function (req, res) {
         Token
             .find({token: req.params.token})
-            .exec(function (err, doc) {
+            .exec(function (err, docs) {
                 if (err) {
-                    res.status(500).json(err);
+                    res.status(500).json(createJsonResponse(undefined, err));
+
+                    return;
                 }
 
-                // Use carbono json messages to assemble response
+                // If the token could not be found, docs will
+                // be an empty array. We should treat those
+                // cases accordingly.
+                if (docs.length > 0) {
+                    res
+                        .status(200)
+                        .json(createJsonResponse(docs[0], undefined));
+                } else {
+                    var error = {
+                        code: 404,
+                        message: 'Token not found'
+                    };
 
-                console.log(doc);
+                    res.status(404).json(createJsonResponse(undefined, error));
+                }
             });
+    };
+
+    /**
+     * Creates a response following Google's
+     * JSON style guide (which is implemented
+     * by the Carbono JSON Messages).
+     *
+     * @param {Object} Object with relevant data
+     *                 to be put in the response.
+     * @param {Object} Errors that may have occurred
+     *                 along the way.
+     * 
+     * @returns {Object} Response object following
+     *                   Google's JSON style guide.
+     */
+    var createJsonResponse = function (data, error) {
+        var cjm = new CJM({apiVersion: pjson.version});
+
+        if (data) {
+            cjm.setData(data);
+        } else {
+            cjm.setError(error);
+        }
+
+        return cjm.toObject();
     };
 
     var tokenController = {
