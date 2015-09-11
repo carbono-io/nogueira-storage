@@ -3,20 +3,26 @@
 var express    = require('express');
 var consign    = require('consign');
 var bodyParser = require('body-parser');
+var mongoose   = require('mongoose');
 
-var app = express();
+global.db = mongoose.createConnection('mongodb://localhost:27017/nogueira');
 
-var PORT = 13956;
+global.db.once('open', function () {
+    var app = express();
 
-// Json parser for post data
-app.use(bodyParser.json());
+    var PORT = 13956;
 
-consign({cwd: 'app'})
-    .include('controllers')
-    .include('routes')
-    .into(app);
+    // Json parser for post data
+    app.use(bodyParser.json());
 
-var server = app.listen(PORT, function () {
-    console.log('Nogueira Storage listening at http://%s:%s',
-        server.address().address, server.address().port);
+    consign({cwd: 'app'})
+        .include('models')
+        .include('controllers')
+        .include('routes')
+        .into(app);
+
+    var server = app.listen(PORT, function () {
+        console.log('Nogueira Storage listening at http://%s:%s',
+            server.address().address, server.address().port);
+    });
 });
