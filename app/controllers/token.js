@@ -22,12 +22,16 @@ module.exports = function (app) {
 
         token.save(function (err, data) {
             if (err) {
-                res.status(500).json(createJsonResponse(undefined, err));
+                var code = 500;
+
+                res
+                    .status(code)
+                    .json(createErrorResponse(err, code, ''));
 
                 return;
             }
 
-            res.status(200).json(createJsonResponse(data, undefined));
+            res.status(200).json(createSuccessResponse(data));
         });
     };
 
@@ -45,7 +49,9 @@ module.exports = function (app) {
             .find({token: req.params.token})
             .exec(function (err, docs) {
                 if (err) {
-                    res.status(500).json(createJsonResponse(undefined, err));
+                    var code = 500;
+
+                    res.status(code).json(createErrorResponse(err, code, ''));
 
                     return;
                 }
@@ -56,42 +62,57 @@ module.exports = function (app) {
                 if (docs.length > 0) {
                     res
                         .status(200)
-                        .json(createJsonResponse(docs[0], undefined));
+                        .json(createSuccessResponse(docs[0]));
                 } else {
-                    var error = {
-                        code: 404,
-                        message: 'Token not found',
-                    };
+                    var code = 404;
+                    var message = 'Token not found';
 
-                    res.status(404).json(createJsonResponse(undefined, error));
+                    res
+                        .status(code)
+                        .json(createErrorResponse({}, code, message));
                 }
             });
     };
 
     /**
-     * Creates a response following Google's
-     * JSON style guide (which is implemented
-     * by the Carbono JSON Messages).
+     * Creates a success response, following Google's
+     * JSON style guide.
      *
      * @param {Object} Object with relevant data
      *                 to be put in the response.
-     * @param {Object} Errors that may have occurred
-     *                 along the way.
      *
-     * @returns {Object} Response object following
-     *                   Google's JSON style guide.
+     * @returns {CarbonoJsonResponse} Response object following
+     *                                Google's JSON style guide.
      */
-    var createJsonResponse = function (data, error) {
+    var createSuccessResponse = function (data) {
+        var cjm = new CJM({apiVersion: pjson.version});
+        cjm.setData(data);
+
+        return cjm.toObject();
+    }
+
+    /**
+     * Creates an error response, following Google's
+     * JSON style guide.
+     *
+     * @param {int} Error code
+     * @param {string} Error message
+     * @param {Object} Error object
+     *
+     * @returns {CarbonoJsonResponse} Response object following
+     *                                Google's JSON style guide.
+     */
+    var createErrorResponse = function (err, code, message) {
         var cjm = new CJM({apiVersion: pjson.version});
 
-        if (data) {
-            cjm.setData(data);
+        if (typeof code !== 'undefined') {
+            cjm.setError(code, message, [err]);
         } else {
-            cjm.setError(error);
+            cjm.setError(err);
         }
 
         return cjm.toObject();
-    };
+    }
 
     var tokenController = {
         saveToken: saveToken,
