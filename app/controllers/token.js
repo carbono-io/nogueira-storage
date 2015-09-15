@@ -49,14 +49,16 @@ module.exports = function (app) {
         Token
             .find({token: req.params.token})
             .exec(function (err, docs) {
+                var code = 200;
+
                 if (err) {
-                    var code = 400;
+                    code = 400;
 
                     res.status(code).json(createErrorResponse(err, code, ''));
                 } else if (docs.length > 0) {
-                    res.status(200).json(createSuccessResponse(docs[0]));    
+                    res.status(code).json(createSuccessResponse(docs[0]));
                 } else {
-                    var code = 404;
+                    code = 404;
                     var message = 'Token not found';
 
                     res
@@ -81,7 +83,7 @@ module.exports = function (app) {
         cjm.setData(data);
 
         return cjm.toObject();
-    }
+    };
 
     /**
      * Creates an error response, following Google's
@@ -104,7 +106,7 @@ module.exports = function (app) {
         }
 
         return cjm.toObject();
-    }
+    };
 
     var tokenController = {
         saveToken: saveToken,
