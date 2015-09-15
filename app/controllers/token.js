@@ -22,11 +22,12 @@ module.exports = function (app) {
 
         token.save(function (err, data) {
             if (err) {
-                var code = 500;
+                var code = 400;
+                var message = 'Token could not be saved';
 
                 res
                     .status(code)
-                    .json(createErrorResponse(err, code, ''));
+                    .json(createErrorResponse(err, code, message));
 
                 return;
             }
@@ -49,20 +50,11 @@ module.exports = function (app) {
             .find({token: req.params.token})
             .exec(function (err, docs) {
                 if (err) {
-                    var code = 500;
+                    var code = 400;
 
                     res.status(code).json(createErrorResponse(err, code, ''));
-
-                    return;
-                }
-
-                // If the token could not be found, docs will
-                // be an empty array. We should treat those
-                // cases accordingly.
-                if (docs.length > 0) {
-                    res
-                        .status(200)
-                        .json(createSuccessResponse(docs[0]));
+                } else if (docs.length > 0) {
+                    res.status(200).json(createSuccessResponse(docs[0]));    
                 } else {
                     var code = 404;
                     var message = 'Token not found';
