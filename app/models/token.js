@@ -1,6 +1,7 @@
 'use strict';
 
-var Schema = require('mongoose').Schema;
+var mongoose = require('mongoose')
+var Schema = mongoose.Schema;
 
 module.exports = function () {
     var token = new Schema({
@@ -13,7 +14,15 @@ module.exports = function () {
             type: Number,
             required: true,
         },
+        created_at: {
+            type: Date,
+            required: true,
+            default: Date.now,
+        },
+        updated_at: {
+            type: Date,
+        },
     });
 
-    return global.db.model('tokens', token);
+    return mongoose.model('tokens', token);
 };

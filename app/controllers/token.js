@@ -1,6 +1,6 @@
 'use strict';
 
-var CJM   = require('carbono-json-messages');
+var CJM = require('carbono-json-messages');
 var pjson = require('../../package.json');
 
 module.exports = function (app) {
@@ -16,7 +16,7 @@ module.exports = function (app) {
      */
     var saveToken = function (req, res) {
         var token = new Token({
-            token: req.body.data.token,
+            token: req.body.data.id,
             status: 0,
         });
 
@@ -32,7 +32,18 @@ module.exports = function (app) {
                 return;
             }
 
-            res.status(200).json(createSuccessResponse(data));
+            var data = {
+                id: data.token,
+                items: [
+                    {
+                        status: data.status,
+                        createdAt: data.created_at,
+                        updatedAt: data.updated_at,
+                    },
+                ],
+            };
+
+            res.status(201).json(createSuccessResponse(data));
         });
     };
 
@@ -56,7 +67,18 @@ module.exports = function (app) {
 
                     res.status(code).json(createErrorResponse(err, code, ''));
                 } else if (docs.length > 0) {
-                    res.status(code).json(createSuccessResponse(docs[0]));
+                    var data = {
+                        id: docs[0].token,
+                        items: [
+                            {
+                                status: docs[0].status,
+                                createdAt: docs[0].created_at,
+                                updatedAt: docs[0].updated_at,
+                            },
+                        ],
+                    };
+
+                    res.status(code).json(createSuccessResponse(data));
                 } else {
                     code = 404;
                     var message = 'Token not found';
