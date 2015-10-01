@@ -1,6 +1,6 @@
 'use strict';
 
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 module.exports = function () {
@@ -14,12 +14,12 @@ module.exports = function () {
             type: Number,
             required: true,
         },
-        created_at: {
+        createdAt: {
             type: Date,
             required: true,
             default: Date.now,
         },
-        updated_at: {
+        updatedAt: {
             type: Date,
         },
     });

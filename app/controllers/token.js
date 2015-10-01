@@ -32,18 +32,18 @@ module.exports = function (app) {
                 return;
             }
 
-            var data = {
+            var msg = {
                 id: data.token,
                 items: [
                     {
                         status: data.status,
-                        createdAt: data.created_at,
-                        updatedAt: data.updated_at,
+                        createdAt: data.createdAt,
+                        updatedAt: data.updatedAt,
                     },
                 ],
             };
 
-            res.status(201).json(createSuccessResponse(data));
+            res.status(201).json(createSuccessResponse(msg));
         });
     };
 
@@ -72,8 +72,8 @@ module.exports = function (app) {
                         items: [
                             {
                                 status: docs[0].status,
-                                createdAt: docs[0].created_at,
-                                updatedAt: docs[0].updated_at,
+                                createdAt: docs[0].createdAt,
+                                updatedAt: docs[0].updatedAt,
                             },
                         ],
                     };

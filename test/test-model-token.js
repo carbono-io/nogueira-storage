@@ -1,8 +1,8 @@
 'use strict';
 
 var chai = require('chai');
-var sinon = require('sinon');
-var sinonChai = require("sinon-chai");
+require('sinon');
+var sinonChai = require('sinon-chai');
 var mongoose = require('mongoose');
 var mockgoose = require('mockgoose');
 
@@ -31,7 +31,7 @@ describe('Token', function () {
                     status: 0,
                 }
             );
-            var promiss = token.save(
+            token.save(
                 function (err, data) {
                     data._id.should.not.be.null;
                     should.not.exist(err);
@@ -48,7 +48,7 @@ describe('Token', function () {
                 }
             );
 
-            var promiss = token.save(
+            token.save(
                 function (err, data) {
                     err.should.not.be.null;
                     should.not.exist(data);
@@ -57,7 +57,7 @@ describe('Token', function () {
         });
 
         it('find the token status', function (done) {
-            var promiss = Token.find(
+            Token.find(
                 {
                     token: 'TOKEN-0007',
                 }
@@ -72,5 +72,3 @@ describe('Token', function () {
         });
     });
 });
-
-

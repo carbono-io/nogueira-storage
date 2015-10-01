@@ -1,11 +1,10 @@
 'use strict';
 
 var chai = require('chai');
-var sinon = require('sinon');
-var sinonChai = require("sinon-chai");
+require('sinon');
+var sinonChai = require('sinon-chai');
 var mongoose = require('mongoose');
 var mockgoose = require('mockgoose');
-var request = require('request');
 var config = require('config');
 
 chai.should();
@@ -25,7 +24,6 @@ describe('Token', function () {
     after(function () {
         nogueiraStorage.server.close();
     });
-
 
     function requestSaveToken(data, callback) {
         var request = require('request');
@@ -79,7 +77,7 @@ describe('Token', function () {
 
                 var obj = httpResponse.body;
                 obj.apiVersion.should.be.equals('0.0.1');
-                //obj.data.id.should.be.equals('TOKEN-0007');
+                obj.data.id.should.be.equals('TOKEN-0007');
 
                 done();
             });
@@ -127,9 +125,8 @@ describe('Token', function () {
         });
 
         it('Get Token Status - fail', function (done) {
-            requestGetStatus("%20", function (httpResponse) {
+            requestGetStatus('%20', function (httpResponse) {
                 httpResponse.statusCode.should.be.equals(404);
-                console.log(httpResponse.body);
                 var obj = JSON.parse(httpResponse.body);
                 obj.apiVersion.should.be.equals('0.0.1');
                 obj.error.should.not.be.null;
