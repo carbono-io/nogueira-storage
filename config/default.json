@@ -1,0 +1,4 @@
+{
+    "mongourl" : "mongodb://localhost:27017/nogueira",
+    "port" : 13956
+}

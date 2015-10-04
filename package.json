@@ -1,6 +1,6 @@
 {
-  "name": "referencia",
-  "version": "0.0.0",
+  "name": "nogueira-storage",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -25,12 +25,18 @@
     "gulp-notify": "2.2.0",
     "jsdoc": "3.3.2",
     "jshint-stylish": "2.0.1",
+    "mockgoose": "4.0.1",
     "mocha": "2.2.5",
-    "sinon": "1.15.4"
+    "request": "^2.61.0",
+    "sinon": "1.15.4",
+    "sinon-chai": "^2.8.0"
   },
   "dependencies": {
     "body-parser": "^1.13.3",
+    "carbono-json-messages": "0.0.2",
+    "config": "^1.16.0",
     "consign": "^0.1.2",
+    "express": "^4.13.3",
     "mongoose": "^4.1.6"
   }
 }
