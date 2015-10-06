@@ -30,6 +30,7 @@ consign({cwd: process.cwd() + '/app'})
 var server = app.listen(port, function () {
     console.log('Nogueira Storage listening at http://%s:%s',
         server.address().address, server.address().port);
+    require('carbono-service-manager');
 });
 
 module.exports.app = app;
