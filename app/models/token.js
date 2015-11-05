@@ -24,5 +24,5 @@ module.exports = function () {
         },
     });
 
-    return mongoose.model('tokens', token);
+    return global.db.model('tokens', token);
 };

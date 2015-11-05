@@ -1,11 +1,11 @@
 {
     "etcd": {
-        "host": "127.0.0.1",
+        "host": "carbonohost",
         "port": 13956,
         "key" : "nog-storage",
         "alias" : "Carbono Nogueira - storage",
         "namespace" : "/nog/"
     },
-    "mongourl" : "mongodb://localhost:27017/nogueira",
+    "mongourl" : "mongodb://mongo:27017/nogueira",
     "port" : 13956
 }
